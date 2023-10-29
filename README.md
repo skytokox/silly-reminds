@@ -12,3 +12,5 @@ Silly Reminds to projekt menedżera zadań, którego głównym celem jest ułatw
 
 ### Technologie
 Projekt jest pisany głównie w języku Javascript z użyciem frameworka Next.JS, planowana jest również wersja mobilna pisana w Javie oraz Android Studio.
+
+https://silly-reminds.vercel.app/
