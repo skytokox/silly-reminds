@@ -26,7 +26,7 @@ const LoadTasks = () => {
                 <h2>{box.workspace}</h2>
                 <ul>
                     {box.tasks.map((task) => (
-                        <li onDoubleClick={(e) => e.target.style = 'text-decoration: line-through'}>{task}</li>
+                        <li key={task} onDoubleClick={(e) => e.target.style = 'text-decoration: line-through'}>{task}</li>
                     ))}
                 </ul>
             </div>
