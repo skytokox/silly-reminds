@@ -1,0 +1,11 @@
+.main {
+    margin: auto auto;
+    border: 1px solid black;
+    width: 30vw;
+    height: 30vh;
+    margin-top: 10vh;
+}
+.label {
+    width: 100%;
+    display:block;
+}

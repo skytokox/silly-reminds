@@ -1,0 +1,90 @@
+{
+  "groups": [
+    {
+      "id": 1,
+      "title": "school",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "math"
+        },
+        {
+          "id": 2,
+          "title": "polish"
+        },
+        {
+          "id": 3,
+          "title": "english"
+        },
+        {
+          "id": 4,
+          "title": "IT"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "work",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "finish task"
+        },
+        {
+          "id": 2,
+          "title": "make coffe"
+        },
+        {
+          "id": 3,
+          "title": "clean up"
+        },
+        {
+          "id": 4,
+          "title": "make report"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "fun",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "watch movies"
+        },
+        {
+          "id": 2,
+          "title": "go to a party"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Other",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "make laundry"
+        },
+        {
+          "id": 2,
+          "title": "cook dinner"
+        },
+        {
+          "id": 3,
+          "title": "clean kitchen"
+        }
+      ]
+    },
+    {
+      "title": "123",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "123"
+        }
+      ],
+      "id": 5
+    }
+  ]
+}
