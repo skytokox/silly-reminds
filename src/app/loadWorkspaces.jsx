@@ -1,15 +1,15 @@
 import React from 'react'
 import styles from './page.module.css'
-// import { getWorkspaces } from './api/workspaces/get/route.js'
+import { getWorkspaces } from './api/workspaces/get/route.js'
 
-async function getWorkspaces() {
-    const res = await fetch('/api/workspaces/get', {
-        next: {
-            revalidate: 0
-        }
-    });
-    return res.json();
-}
+// async function getWorkspaces() {
+//     const res = await fetch('/api/workspaces/get', {
+//         next: {
+//             revalidate: 0
+//         }
+//     });
+//     return res.json();
+// }
 
 // export async function getServerSideProps() {
 //     const rows = await getData();
