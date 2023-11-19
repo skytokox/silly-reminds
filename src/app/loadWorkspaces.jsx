@@ -5,8 +5,8 @@ import styles from './page.module.css'
 
 async function getWorkspaces() {
     // const res = await fetch('http://localhost:3000/api/workspaces/get', { cache: 'no-store'});
-    const res = await fetch(`http://${process.env.VERCEL_URL}/api/workspaces/get`, { cache: 'no-store'});
-    console.log(res)
+    // const res = await fetch(`http://${process.env.VERCEL_URL}/api/workspaces/get`, { cache: 'no-store'});
+    console.log(process.env.VERCEL_URL);
     return res.json();
 }
 
