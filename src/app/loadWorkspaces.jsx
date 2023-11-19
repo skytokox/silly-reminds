@@ -1,26 +1,21 @@
 `use client`
 import React from 'react'
 import styles from './page.module.css'
-import { getWorkspaces } from './api/workspaces/get/route.js'
+// import { getWorkspaces } from './api/workspaces/get/route.js'
 
-// async function getWorkspaces() {
-//     const res = await fetch('/api/workspaces/get', {
-//         next: {
-//             revalidate: 0
-//         }
-//     });
-//     return res.json();
-// }
-
-// export async function getServerSideProps() {
-//     const rows = await getData();
-//     return { props: { rows } }
-// }
-
+async function getWorkspaces() {
+    // const res = await fetch('http://localhost:3000/api/workspaces/get', { cache: 'no-store'});
+    const res = await fetch(`http://${process.env.VERCEL_URL}/api/workspaces/get`, { cache: 'no-store'});
+    console.log(res)
+    return res.json();
+}
 
 
 export default async function loadWorkspaces() {
-    const rows = await getWorkspaces();
+    const data = await getWorkspaces();
+    const { rows } = data;
+    console.log(rows);
+    
     return (
         <>
         {rows.map((workspace) => (
