@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation"
 import styles from './page.module.css'
+import { getWorkspaces } from "../api/workspaces/get/route";
 
 export default function CreateForm() {
 
@@ -10,7 +11,6 @@ export default function CreateForm() {
 
   const [title, setTitle] = useState("");
   const [workspace, setWorkspace] = useState();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -50,12 +50,9 @@ export default function CreateForm() {
         </label> <br/>
         <label>
           <span>Workspace: </span>
-          <input
-            required
-            type="text"
-            onChange={(e) => setWorkspace(e.target.value)}
-            value={workspace}
-          />
+          <select>
+            <option value="school">school</option>
+          </select>
         </label> <br/>
         <button>Add task</button>
       </form>

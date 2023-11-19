@@ -1,6 +1,7 @@
 import styles from './page.module.css'
-import LoadGroups from './loadGroups'
 import LoadWorkspaces from './loadWorkspaces'
+
+
 
 export default function Home() {
   return (

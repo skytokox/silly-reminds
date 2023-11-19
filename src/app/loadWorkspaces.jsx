@@ -1,19 +1,27 @@
+`use client`
+
 import React from 'react'
 import styles from './page.module.css'
+import { getWorkspaces } from './api/workspaces/get/route.js'
 
-async function getWorkspaces() {
-    const res = await fetch('http://localhost:3000/api/workspaces', {
-        next: {
-            revalidate: 0
-        }
-    });
-    return res.json();
-}
+// async function getWorkspaces() {
+//     const res = await fetch('https://silly-reminds.vercel.app/api/workspaces', {
+//         next: {
+//             revalidate: 0
+//         }
+//     });
+//     return res.json();
+// }
+
+// export async function getServerSideProps() {
+//     const rows = await getData();
+//     return { props: { rows } }
+// }
+
 
 
 export default async function loadWorkspaces() {
-    const workspaces = await getWorkspaces();
-    const { rows } = workspaces;
+    const rows = await getWorkspaces();
     return (
         <>
         {rows.map((workspace) => (
@@ -22,6 +30,5 @@ export default async function loadWorkspaces() {
                 </div>
             ))}
         </>
-        // {groups}
     )
 }
