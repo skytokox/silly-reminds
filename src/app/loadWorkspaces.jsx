@@ -1,3 +1,4 @@
+`use client`
 import React from 'react'
 import styles from './page.module.css'
 import { getWorkspaces } from './api/workspaces/get/route.js'
