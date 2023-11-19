@@ -1,12 +1,21 @@
 import { NextResponse } from "next/server";
 import { sql } from "@vercel/postgres";
+import { cache } from 'react';
 
-export async function getWorkspaces() {
-  const result =
-    await sql`SELECT * FROM workspaces`;
+export const revalidate = 0;
+
+// export async function getWorkspaces() {
+//   const result =
+//     await sql`SELECT * FROM workspaces`;
+//   const { rows } = result;
+//   return rows;
+// }
+export const getWorkspaces = cache(async () => {
+  const result = await sql`SELECT * FROM workspaces`;
   const { rows } = result;
   return rows;
-}
+})
+
 
 export async function GET(request) {
   try {
