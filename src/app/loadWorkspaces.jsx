@@ -1,11 +1,11 @@
-`use client`
+
 
 import React from 'react'
 import styles from './page.module.css'
 import { getWorkspaces } from './api/workspaces/get/route.js'
 
 // async function getWorkspaces() {
-//     const res = await fetch('https://silly-reminds.vercel.app/api/workspaces', {
+//     const res = await fetch('hrkspaces', {
 //         next: {
 //             revalidate: 0
 //         }
