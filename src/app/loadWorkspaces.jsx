@@ -7,22 +7,22 @@ async function getWorkspaces() {
     // const res = await fetch('http://localhost:3000/api/workspaces/get', { cache: 'no-store'});
     // const res = await fetch(`http://${process.env.VERCEL_URL}/api/workspaces/get`, { cache: 'no-store'});
     console.log(process.env.VERCEL_URL);
-    return res.json();
+    // return res.json();
 }
 
 
 export default async function loadWorkspaces() {
-    const data = await getWorkspaces();
-    const { rows } = data;
-    console.log(rows);
-    
+    // const data = await getWorkspaces();
+    // const { rows } = data;
+    // console.log(rows);
+    getWorkspaces();    
     return (
         <>
-        {rows.map((workspace) => (
+        {/* {rows.map((workspace) => (
                 <div key={workspace.id} className="workspace">
                     <h3>{workspace.name}</h3>
                 </div>
-            ))}
+            ))} */}
         </>
     )
 }
