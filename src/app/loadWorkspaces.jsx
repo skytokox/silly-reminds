@@ -7,7 +7,7 @@ async function getWorkspaces() {
     // const res = await fetch('http://localhost:3000/api/workspaces/get', { cache: 'no-store'});
     // const res = await fetch(`http://${process.env.VERCEL_URL}/api/workspaces/get`, { cache: 'no-store'});
     // console.log(process.env.VERCEL_URL);
-    const res = await fetch('https://silly-reminds-git-test-norberts-projects-5cd8fe3e.vercel.app/api/workspaces/get', { cache: 'no-store'})
+    const res = await fetch('https://silly-reminds.vercel.app/api/workspaces/get', { cache: 'no-store'})
     return res.json();
 }
 
@@ -15,8 +15,6 @@ async function getWorkspaces() {
 export default async function loadWorkspaces() {
     const data = await getWorkspaces();
     const { rows } = data;
-    console.log(rows);
-    getWorkspaces();    
     return (
         <>
         {rows.map((workspace) => (
