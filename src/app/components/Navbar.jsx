@@ -13,7 +13,7 @@ export default function Navbar() {
         />
         <h1>Silly Reminds</h1>
         <Link href="/">Dashboard</Link>
-        <Link href="/create">Create new Task</Link>
+        <Link href="/create">Add workspace</Link>
         <Link href="/notes">Notes</Link>
     </nav>
   )

@@ -4,57 +4,47 @@ import { useState } from "react";
 import { useRouter } from "next/navigation"
 import styles from './page.module.css'
 import { getWorkspaces } from "../api/workspaces/get/route";
+import { sql } from "@vercel/postgres";
 
 export default function CreateForm() {
 
   const router = useRouter();
 
-  const [title, setTitle] = useState("");
-  const [workspace, setWorkspace] = useState();
+  const [name, setName] = useState("");
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const group = {
-      "title": workspace,
-      "tasks": [
-        {
-          "id": 1,
-          "title": title
-        }
-      ]
+      "name": name,
     }
 
-    const res = await fetch('http://localhost:4000/groups', {
-      method: 'POST',
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(group)
-    })
+    // const res = await fetch('http://localhost:3000/api/workspaces/add', {
+    //   method: 'POST',
+    //   headers: {"Content-Type": "application/json"},
+    //   body: JSON.stringify(group)
+    // })
 
-    if(res.status == 201) {
-      router.refresh();
-      router.push('/');
-    }
+    // if(res.status == 201) {
+    //   router.refresh();
+    //   router.push('/');
+    // }
+    // console.log(res);
   }
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} action="https://silly-reminds.vercel.app/api/workspaces/add">
         <label className={styles.label}>
-          <span>Title: </span>
+          <span>Name: </span>
           <input
             required
             type="text"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+            name="name"
           />
         </label> <br/>
-        <label>
-          <span>Workspace: </span>
-          <select>
-            <option value="school">school</option>
-          </select>
-        </label> <br/>
-        <button>Add task</button>
+        <button>Add workspace</button>
       </form>
     </main>
   )

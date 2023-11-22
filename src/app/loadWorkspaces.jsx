@@ -1,6 +1,7 @@
 `use client`
 import React from 'react'
 import styles from './page.module.css'
+import Link from 'next/link';
 // import { getWorkspaces } from './api/workspaces/get/route.js'
 
 async function getWorkspaces() {
@@ -11,6 +12,10 @@ async function getWorkspaces() {
     return res.json();
 }
 
+async function deleteWorkspae(id) {
+    const res = await fetch(`http://localhost:3000/api/workspaces/delete?id=${id}`);
+    console.log(res);
+}
 
 export default async function loadWorkspaces() {
     const data = await getWorkspaces();
@@ -18,9 +23,14 @@ export default async function loadWorkspaces() {
     return (
         <>
         {rows.map((workspace) => (
+            <Link key={workspace.id} href={{
+                pathname: '/api/workspaces/delete',
+                query: { id: workspace.id},
+            }}>
                 <div key={workspace.id} className="workspace">
                     <h3>{workspace.name}</h3>
                 </div>
+            </Link>
             ))}
         </>
     )
