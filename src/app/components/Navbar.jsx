@@ -6,10 +6,10 @@ export default function Navbar() {
   return (
     <nav>
         <Image 
-            src={Logo}
-            alt='Silly Reminds logo'
-            width={100}
-            quality={100}
+          src={Logo}
+          alt='Silly Reminds logo'
+          width={100}
+          quality={100}
         />
         <h1>Silly Reminds</h1>
         <Link href="/">Dashboard</Link>
