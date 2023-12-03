@@ -12,7 +12,7 @@ h1, h2 {
 }
 
 main {
-  @apply max-w-5xl ml-20;
+  @apply max-w-6xl ml-20;
 }
 
 nav {
@@ -25,11 +25,11 @@ a:hover {
 }
 .groups {
   @apply
-  max-w-4xl my-12;
+  max-w-6xl my-12;
 }
 .workspaces {
   @apply
-  flex items-center justify-start gap-5;
+  flex items-center justify-start gap-5 flex-wrap;
 }
 .workspace {
   @apply
