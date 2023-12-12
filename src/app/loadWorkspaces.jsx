@@ -14,7 +14,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 export default function LoadWorkspaces() {
     // const data = await getWorkspaces();
     const { data, error, isLoading} = useSWR(
-        "http://localhost:3000/api/workspaces/get",
+        "https://silly-reminds.vercel.app/api/workspaces/get",
         fetcher
     )
     // console.log(data.rows)
