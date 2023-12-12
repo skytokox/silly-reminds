@@ -12,9 +12,10 @@ export default function CreateForm() {
   const [name, setName] = useState("");
 
   return (
-    <main>
-      <form action={`/api/workspaces/add`}>
-        <label className={styles.label}>
+      <form action={`/api/workspaces/add`} className="add-form">
+        <h2>Add Workspace</h2>
+        <br />
+        <label>
           <span>Name: </span>
           <input
             required
@@ -24,7 +25,7 @@ export default function CreateForm() {
             name="name"
           />
         </label> <br/>
-        <label className={styles.label}>
+        <label>
           <span>Code: </span>
           <input
             required
@@ -32,8 +33,7 @@ export default function CreateForm() {
             name="code"
           />
         </label> <br/>
-        <button>Add workspace</button>
+        <button>Add</button>
       </form>
-    </main>
   )
 }
