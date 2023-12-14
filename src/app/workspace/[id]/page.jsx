@@ -27,7 +27,7 @@ export default async function Page({ params }) {
       <h2 className='text-2xl'>Workspace: {name}</h2>
       <div className="tasks">
         {isEmpty ? "brak zadan" : tasks.map((task) => (
-          <Link key={task.id} href={`/api/tasks/delete?id=${task.id}`}>
+          <Link key={task.id} href={`/api/tasks/delete/${task.id}`}>
             <div className='task' key={task.id}>
               {task.name}
             </div>
