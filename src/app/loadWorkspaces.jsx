@@ -4,25 +4,19 @@ import styles from './page.module.css'
 import Link from 'next/link';
 import useSWR from "swr"
 
-// async function getWorkspaces() {
-//     const res = await fetch('http://localhost:3000/api/workspaces/get', { 
-//         cache: 'no-cache'
-//     })
-//     return res.json();
-// }
-const fetcher = (url) => fetch(url).then((res) => res.json());
+
 export default function LoadWorkspaces() {
-    // const data = await getWorkspaces();
+
+    const fetcher = (url) => fetch(url).then((res) => res.json());
     const { data, error, isLoading} = useSWR(
-        "https://silly-reminds.vercel.app/api/workspaces/get",
+        "/api/workspaces/get",
         fetcher
     )
-    // console.log(data.rows)
-    // console.log({ rows } = data)
-    // console.log(data.rows)
-    if(!data) {
+
+    if(isLoading) {
         return "loading...";
     }
+
     const rows = data.rows;
     return (
         <>

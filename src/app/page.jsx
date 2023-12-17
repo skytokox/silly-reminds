@@ -17,7 +17,7 @@ export default function Home() {
         <div className="workspaces">
           <LoadWorkspaces />
           <AddGroup setModalActive={setModalActive}/>
-          {modalActive && (<Modal setModalActive={setModalActive}/>)}
+          {modalActive && (<Modal setModalActive={setModalActive} mode={'workspace'}/>)}
         </div>
       </div>
     </main>

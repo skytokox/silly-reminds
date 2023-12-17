@@ -9,5 +9,4 @@ export async function GET(request) {
         sql`INSERT INTO workspaces(name) VALUES (${name})`
     }
     redirect('/');
-    // return Response.json( {name} ); 
 }
