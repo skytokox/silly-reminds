@@ -5,8 +5,9 @@ export async function GET(request) {
 
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
-    sql`DELETE FROM workspaces WHERE id=${id}`
+    const workspace_id = searchParams.get('workspace_id');
+    sql`DELETE FROM tasks WHERE id=${id}`
 
-    redirect('/');
+    redirect(`/workspace/${workspace_id}`, "replace");
     return Response.json({ id }); 
 }

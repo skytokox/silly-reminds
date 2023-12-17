@@ -1,52 +1,60 @@
-`use client`
-import { revalidate } from '@/app/api/workspaces/get/route';
+"use client"
 import React from 'react'
 import Link from "next/link"
+import useSWR from 'swr';
+import { useState } from 'react';
+import Modal from '@/app/components/Modal';
 
-async function getWorkspace(id) {
-  const res = await fetch(`https://silly-reminds.vercel.app/api/workspaces/getById/${id}`);
-  return res.json();
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+function GetWorkspace(id) {
+  const { data, isLoading } = useSWR(`http://localhost:3000/api/workspaces/getById/${id}`,
+    fetcher)
+  if (!isLoading) {
+    return data;
+  }
+}
+function GetTasks(id) {
+  const { data, isLoading } = useSWR(`http://localhost:3000/api/tasks/getByWorkspaceId/${id}`,
+    fetcher)
+  if (!isLoading) {
+    return data;
+  }
 }
 
-async function getTasks(id) {
-  const res = await fetch(`https://silly-reminds.vercel.app/api/tasks/getByWorkspaceId/${id}`, {
-    next: { revalidate: 0 }
-  });
-  return res.json();
-}
 
-
-export default async function Page({ params }) {
+export default function Page({ params }) {
   const id = params.id;
-  const data = await getWorkspace(id);
-  const tasks = await getTasks(id);
+  const data = GetWorkspace(id);
+  const tasks = GetTasks(id);
+
+  const [modalActive, setModalActive] = useState(false);
+
+
+  if (!data || !tasks) {
+    return "loading..."
+  }
   const { name } = data;
   const isEmpty = tasks == "" ? true : false
   return (
     <main className='workspace-page'>
-      <h2 className='text-2xl'>Workspace: {name}</h2>
-      <div className="tasks">
+      <h2 className='text-3xl'>Workspace: {name}</h2>
+      <div className='control-buttons'>
+        <button className='btn-add' onClick={() => setModalActive(true)}>Add task</button>
+      </div>
+      <div className='tasks'>
         {isEmpty ? "brak zadan" : tasks.map((task) => (
-          <Link key={task.id} href={`/api/tasks/delete?id=${task.id}`}>
-            <div className='task' key={task.id}>
-              {task.name}
-            </div>
-          </Link>
+          <div className='task' key={task.id}>
+            <Link key={task.id} href={`/api/tasks/delete?id=${task.id}&workspace_id=${id}`}>
+              <h3>{task.name}</h3>
+              <p>{task.description}</p>
+            </Link>
+          </div>
         ))}
       </div>
+      {modalActive && (<Modal setModalActive={setModalActive} id={id} mode={'task'}/>)}
       <br /> <br />
-      <form action={`/api/tasks/add`}>
-        <label>
-          <span>Name: </span>
-          <input
-            required
-            type="text"
-            name="name"
-          />
-        </label> <br />
-        <input type="hidden" name="id" value={id} />
-        <button>Add task</button>
-      </form>
     </main>
   )
 }
