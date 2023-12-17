@@ -9,14 +9,14 @@ import Modal from '@/app/components/Modal';
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 function GetWorkspace(id) {
-  const { data, isLoading } = useSWR(`http://localhost:3000/api/workspaces/getById/${id}`,
+  const { data, isLoading } = useSWR(`/api/workspaces/getById/${id}`,
     fetcher)
   if (!isLoading) {
     return data;
   }
 }
 function GetTasks(id) {
-  const { data, isLoading } = useSWR(`http://localhost:3000/api/tasks/getByWorkspaceId/${id}`,
+  const { data, isLoading } = useSWR(`/api/tasks/getByWorkspaceId/${id}`,
     fetcher)
   if (!isLoading) {
     return data;
