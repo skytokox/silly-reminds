@@ -4,6 +4,8 @@ import Link from "next/link"
 import useSWR from 'swr';
 import { useState } from 'react';
 import Modal from 'src/app/components/Modal';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -30,12 +32,18 @@ export default function Page({ params }) {
   const tasks = GetTasks(id);
 
   const [modalActive, setModalActive] = useState(false);
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  if(!session) {
+    router.push('/');
+  }
 
 
   if (!data || !tasks) {
     return "loading..."
   }
-  
+
   const { name } = data;
   const isEmpty = tasks == "" ? true : false
   return (
