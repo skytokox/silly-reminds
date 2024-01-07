@@ -22,14 +22,6 @@ export default function CreateTask({ id }) {
             name="desc"
           />
         </label> <br/>
-        <label>
-          <span>Code: </span>  <br/>
-          <input
-            required
-            type="password"
-            name="code"
-          />
-        </label> <br/>
         <input type="hidden" name="id" value={id} />
         <button>Add</button>
       </form>
