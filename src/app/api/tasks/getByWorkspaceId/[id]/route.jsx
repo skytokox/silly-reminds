@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export const revalidate = 0;
 
-export const getTasks = async (id) => {
+const getTasks = async (id) => {
     const result = await sql`SELECT id, name, description FROM tasks WHERE workspace_id=${id}`;
     const { rows } = result;
     return rows;

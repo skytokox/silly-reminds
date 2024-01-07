@@ -4,7 +4,7 @@ import { cache } from 'react';
 
 export const revalidate = 0;
 
-export const getWorkspaces = async (user_id) => {
+const getWorkspaces = async (user_id) => {
   const result = await sql`SELECT * FROM workspaces WHERE ${user_id} = ANY (users) `;
   const { rows } = result;
   return rows;

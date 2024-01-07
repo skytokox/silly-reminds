@@ -3,7 +3,7 @@ import { sql } from "@vercel/postgres"
 
 export const revalidate = 0;
 
-export const getWorkspace = async (id) => {
+const getWorkspace = async (id) => {
     const result = await sql`SELECT name FROM workspaces WHERE id=${id}`;
     const { rows } = result;
     return rows[0];
