@@ -10,6 +10,5 @@ export async function GET(request) {
     if(code == 'brunoadmin') {
         sql`INSERT INTO tasks(name, workspace_id, description) VALUES (${name}, ${id}, ${desc})`;
     }
-    redirect(`/`);
-    // return Response.json( {name} ); 
+    redirect(`/workspace/${id}`);
 }

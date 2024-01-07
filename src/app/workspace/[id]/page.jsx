@@ -3,7 +3,7 @@ import React from 'react'
 import Link from "next/link"
 import useSWR from 'swr';
 import { useState } from 'react';
-import Modal from '@/app/components/Modal';
+import Modal from 'src/app/components/Modal';
 
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -35,6 +35,7 @@ export default function Page({ params }) {
   if (!data || !tasks) {
     return "loading..."
   }
+  
   const { name } = data;
   const isEmpty = tasks == "" ? true : false
   return (

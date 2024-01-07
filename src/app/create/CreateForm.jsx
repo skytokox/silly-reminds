@@ -3,13 +3,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation"
 import styles from './page.module.css'
-import { getWorkspaces } from "../api/workspaces/get/route";
+import { getWorkspaces } from "../api/workspaces/get/[user_id]/route";
 import { sql } from "@vercel/postgres";
 
 export default function CreateForm() {
-
-
-  const [name, setName] = useState("");
 
   return (
       <form action={`/api/workspaces/add`} className="add-form">
@@ -20,8 +17,6 @@ export default function CreateForm() {
           <input
             required
             type="text"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
             name="name"
           />
         </label> <br/>
