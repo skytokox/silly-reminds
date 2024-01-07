@@ -4,9 +4,8 @@ import { redirect } from 'next/navigation';
 export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const name = searchParams.get('name');
-    const code = searchParams.get('code');
-    if(code == 'brunoadmin') {
-        sql`INSERT INTO workspaces(name) VALUES (${name})`
-    }
+    const id = [searchParams.get('user_id')];
+
+    sql`INSERT INTO workspaces(name, users) VALUES (${name}, ${id})`
     redirect('/');
 }

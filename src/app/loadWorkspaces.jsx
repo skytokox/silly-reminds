@@ -3,13 +3,19 @@ import React from 'react'
 import styles from './page.module.css'
 import Link from 'next/link';
 import useSWR from "swr"
+import { useSession } from "next-auth/react"
 
 
 export default function LoadWorkspaces() {
 
+    const { data: session, status } = useSession();
+
     const fetcher = (url) => fetch(url).then((res) => res.json());
+
+    const id = session ? session.user.id : 0;
+
     const { data, error, isLoading} = useSWR(
-        "/api/workspaces/get",
+        `/api/workspaces/get/${id}`,
         fetcher
     )
 

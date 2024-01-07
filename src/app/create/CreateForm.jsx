@@ -3,15 +3,16 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation"
 import styles from './page.module.css'
-import { getWorkspaces } from "../api/workspaces/get/route";
+import { getWorkspaces } from "../api/workspaces/get/[user_id]/route";
 import { sql } from "@vercel/postgres";
+import { useSession } from "next-auth/react";
 
 export default function CreateForm() {
 
+  const { data: session } = useSession();
+  const router = useRouter();
 
-  const [name, setName] = useState("");
-
-  return (
+  return session ? (
       <form action={`/api/workspaces/add`} className="add-form">
         <h2>Add Workspace</h2>
         <br />
@@ -20,20 +21,17 @@ export default function CreateForm() {
           <input
             required
             type="text"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
             name="name"
           />
         </label> <br/>
         <label>
-          <span>Code: </span>
           <input
-            required
-            type="password"
-            name="code"
+            type="hidden"
+            name="user_id"
+            value={session.user.id}
           />
         </label> <br/>
         <button>Add</button>
       </form>
-  )
+  ) : "You need to log in first!";
 }

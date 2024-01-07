@@ -4,11 +4,20 @@ import LoadWorkspaces from './loadWorkspaces'
 import AddGroup from './components/AddGroup'
 import Modal from './components/Modal';
 import { useState } from 'react';
+import { useSession } from "next-auth/react";
 
 
 export default function Home() {
 
   const [modalActive, setModalActive] = useState(false);
+
+  const { data: session, status } = useSession();
+  
+  if(status === 'loading') {
+    return 'loading....';
+  }
+
+  // console.log(session);
 
   return (
     <main>
