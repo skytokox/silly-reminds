@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { sql } from "@vercel/postgres";
 const bcrypt = require('bcrypt');
 
-export const authOptions = {
+const authOptions = {
     providers: [
         CredentialsProvider({
             type: "credentials",
