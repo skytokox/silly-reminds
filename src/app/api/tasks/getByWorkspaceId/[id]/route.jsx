@@ -14,5 +14,5 @@ const getTasks = async (id) => {
 export async function GET(request, { params }) {
     const id = params.id;
     const tasks = await getTasks(id)
-    return NextResponse.json(tasks); 
+    return NextResponse.json({ tasks }); 
 }
