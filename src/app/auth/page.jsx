@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import { useState } from 'react';
+import { useRouter } from 'next/navigation'
 
 export default function Auth() {
 
@@ -8,6 +9,7 @@ export default function Auth() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
+  const router = useRouter();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +29,9 @@ export default function Auth() {
       }
     })
 
+    if(response.ok) {
+      router.push('/');
+    }
     console.log(response);
   }
 
