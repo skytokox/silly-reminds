@@ -21,7 +21,7 @@ function GetTasks(id) {
   const { data, isLoading } = useSWR(`/api/tasks/getByWorkspaceId/${id}`,
     fetcher)
   if (!isLoading) {
-    return data;
+    return data.tasks;
   }
 }
 
@@ -30,6 +30,7 @@ export default function Page({ params }) {
   const id = params.id;
   const data = GetWorkspace(id);
   const tasks = GetTasks(id);
+  console.log(tasks);
 
   const [modalActive, setModalActive] = useState(false);
   const { data: session } = useSession();
