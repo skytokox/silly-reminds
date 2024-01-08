@@ -24,6 +24,7 @@ export default function Navbar() {
       />
       <h1>Silly Reminds</h1>
       <Link href="/">Dashboard</Link>
+      <Link href="/auth">Register</Link>
       <SignInButton />
       {/* <Link href="/create">Add workspace</Link> */}
       {/* <Link href="/notes">Notes</Link> */}
