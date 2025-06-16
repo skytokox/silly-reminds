@@ -42,14 +42,6 @@ const authOptions = {
                 
                 console.log(user_fetched);
                 console.log(isPassValid);
-                // if (username != "skaj" && password != '1234') {
-                //     return null;
-                // }else if(username == "skaj" && password == '1234') {
-                //     user = { id: 1, name: 'skaj', email: 'skaj@gmail.com' }
-                // }else if(username == "bruno" && password == '1234') {
-                //     user = { id: 2, name: 'bruno', email: 'siur@gmail.com' }
-                // }
-                
                 return user;
 
             }
